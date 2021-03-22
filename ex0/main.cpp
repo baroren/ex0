@@ -14,28 +14,29 @@ using std::cout;
 using std::endl;
 using std::setw;
 using std::ifstream;
-using std::getline;
+using std::get;
+using std::ofstream;
 //-----------const section & enum -------
 const int MAX_STR_LEN=1000;
 //--------prororype section -------
 // reading input files
-void read_file(char dec_str[] , char user_inp[]);
+void read_file();
 //read from file to the str
-void read_to_str( ifstream &d_file ,ifstream &inp_file ,
-                 char user_inp[], char dec_str[]);
+void print_to_file( ifstream &d_file ,ifstream &inp_file,char fname[]);
+//compare chr to the dycription and returns the right one
+void check(char &ch_c,ifstream &d_file);
 //---------main section ----
 int main() {
-    char dec_str[MAX_STR_LEN], user_inp[MAX_STR_LEN];
     
     
-    read_file(dec_str,user_inp);
+    read_file();
     //decrypy();
     //output();
     return 0;
 }
 //---------------------
 // reading input files
-void read_file(char dec_str[] , char user_inp[])
+void read_file()
 {
     char fname[MAX_STR_LEN]; // redaing the file name from user
     ifstream d_file, inp_file;
@@ -45,32 +46,56 @@ void read_file(char dec_str[] , char user_inp[])
     cin >> setw(MAX_STR_LEN)>>fname;
     inp_file.open(fname);
     
-    read_to_str(d_file,inp_file,user_inp,dec_str);
+    print_to_file(d_file,inp_file,fname);
 }
 //------------------------------
 //read from file to the str
-void read_to_str( ifstream &d_file ,ifstream &inp_file ,
-                 char user_inp[], char dec_str[])
+void print_to_file( ifstream &d_file ,ifstream &inp_file,char fname[])
 {
-    int pos_d=0,pos_i=0;
-    if (!d_file.is_open() && !inp_file.is_open())
+    char ch_c ; // redaing the file name from user
+    ofstream out;
+    cin >> setw(MAX_STR_LEN)>>fname;
+    out.open(fname);
+    
+    if (!d_file.is_open() && !inp_file.is_open()&&
+        !out.is_open())
     {
         exit(EXIT_FAILURE);
     }
+    ch_c=inp_file.get();
+    cout <<ch_c;
     
-//    inp_file >> user_inp[pos_i];
-//    d_file >> dec_str[pos_d];
-    
-    while (!d_file.eof()){
-        d_file.getline(d_file,dec_str);
+    while (!inp_file.eof()) {
+        if (isalpha(ch_c)) {
+        check(ch_c,d_file);
+        }
+        out << ch_c ;
+        cout <<ch_c;
+        inp_file.get(ch_c);
     }
-    while (dec_str[pos_d]!='\0') {
-        cout << dec_str[pos_d] << " !";
-        pos_d++;
+
+    out.close();
+    inp_file.close();
+    d_file.close();
+}
+//----------------------------------
+//compare chr to the dycription and returns the right one
+void check(char &ch_c,ifstream &d_file)
+{
+    char d;
+    d_file.clear();
+    d_file.seekg(0,std::ios::beg);
+    
+    while (!d_file.eof()) {
+        d_file.get(d);
+        cout <<d <<" " <<endl;
+        if (ch_c==d) {
+            ch_c=d_file.get();
+            return;
+        }
+        if(d!= ' ' )
+            d_file.get(d);
+        cout <<d <<" " <<endl;
+       // d_file.seekg(2,std::ios::cur);
     }
-    
-    
-    cout << user_inp[pos_i]<< " 2?";
-    
-    
 }

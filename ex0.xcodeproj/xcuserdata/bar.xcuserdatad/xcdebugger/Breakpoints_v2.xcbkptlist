@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "read_to_str(d_file, inp_file, user_inp, dec_str)"
+            landmarkName = "print_to_file(d_file, inp_file, fname)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "read_to_str(d_file, inp_file, user_inp, dec_str)"
+            landmarkName = "print_to_file(d_file, inp_file, fname)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -48,7 +48,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "read_to_str(d_file, inp_file, user_inp, dec_str)"
+            landmarkName = "print_to_file(d_file, inp_file, fname)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "read_to_str(d_file, inp_file, user_inp, dec_str)"
+            landmarkName = "print_to_file(d_file, inp_file, fname)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

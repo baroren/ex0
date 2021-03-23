@@ -17,7 +17,7 @@ using std::ifstream;
 using std::get;
 using std::ofstream;
 //-----------const section & enum -------
-const int MAX_STR_LEN=1000;
+const int MAX_STR_LEN=100;
 //--------prororype section -------
 // reading input files
 void read_file();
@@ -63,7 +63,7 @@ void print_to_file( ifstream &d_file ,ifstream &inp_file,char fname[])
         exit(EXIT_FAILURE);
     }
     ch_c=inp_file.get();
-    cout <<ch_c;
+  
     
     while (!inp_file.eof()) {
         if (isalpha(ch_c)) {
@@ -85,17 +85,18 @@ void check(char &ch_c,ifstream &d_file)
     char d;
     d_file.clear();
     d_file.seekg(0,std::ios::beg);
-    
-    while (!d_file.eof()) {
+
+
+    while (!d_file.eof()&& d_file.tellg()!=-1) {
+
         d_file.get(d);
-        cout <<d <<" " <<endl;
+
         if (ch_c==d) {
             ch_c=d_file.get();
             return;
         }
-        if(d!= ' ' )
-            d_file.get(d);
-        cout <<d <<" " <<endl;
-       // d_file.seekg(2,std::ios::cur);
+
+       d_file.seekg(2,std::ios::cur);
+       
     }
 }

@@ -1,5 +1,9 @@
-/*ex0a : premitive dycryption
-*
+/*ex0a : premitive encryption
+*given 2 files , one for the encryption you need to encrypt the
+*input file in the following rules , the rules file contain 2 letters
+*each time , the first letter is the letter to change , this one is
+*comparing with the input file , and the secon letter is what
+*to change to 
 */
 //------------include section--------
 #include <iostream>
@@ -118,7 +122,7 @@ void check(char &ch_c,ifstream &d_file)
 
        d_file.seekg(2,std::ios::cur);
 //because our system is ab ab (a is the letter to change and b is
-//the changed letter , i want to skeep 2 places after evrey run in the
+//the changed letter , i want to skip 2 places after evrey run in the
 //loop
        
     }
